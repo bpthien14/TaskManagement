@@ -1,0 +1,58 @@
+import type { Task } from "./types"
+
+export const mockTasks: Task[] = [
+  {
+    id: "1",
+    title: "Complete project proposal",
+    description: "Draft and finalize the project proposal for the new client.",
+    status: "todo",
+    dueDate: "2025-05-20T00:00:00.000Z",
+    tags: ["Work", "Urgent"],
+    createdAt: "2025-05-10T10:00:00.000Z",
+  },
+  {
+    id: "2",
+    title: "Review marketing materials",
+    description: "Review and provide feedback on the new marketing materials.",
+    status: "in-progress",
+    dueDate: "2025-05-18T00:00:00.000Z",
+    tags: ["Marketing", "Review"],
+    createdAt: "2025-05-11T09:30:00.000Z",
+  },
+  {
+    id: "3",
+    title: "Prepare for team meeting",
+    description: "Create agenda and gather materials for the weekly team meeting.",
+    status: "todo",
+    dueDate: "2025-05-16T00:00:00.000Z",
+    tags: ["Meeting", "Preparation"],
+    createdAt: "2025-05-12T14:00:00.000Z",
+  },
+  {
+    id: "4",
+    title: "Update website content",
+    description: "Update the company website with new product information and blog posts.",
+    status: "in-progress",
+    dueDate: "2025-05-25T00:00:00.000Z",
+    tags: ["Website", "Content"],
+    createdAt: "2025-05-13T11:15:00.000Z",
+  },
+  {
+    id: "5",
+    title: "Send client invoice",
+    description: "Prepare and send invoice to client for completed project.",
+    status: "done",
+    dueDate: "2025-05-15T00:00:00.000Z",
+    tags: ["Finance", "Client"],
+    createdAt: "2025-05-14T16:45:00.000Z",
+  },
+  {
+    id: "6",
+    title: "Research new tools",
+    description: "Research and evaluate new project management tools for the team.",
+    status: "todo",
+    dueDate: "2025-05-30T00:00:00.000Z",
+    tags: ["Research", "Tools"],
+    createdAt: "2025-05-15T13:20:00.000Z",
+  },
+]

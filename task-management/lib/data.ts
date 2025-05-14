@@ -1,0 +1,68 @@
+import type { Task } from "./types"
+
+export const mockTasks: Task[] = [
+  {
+    id: "1",
+    title: "Design new landing page",
+    description: "Create wireframes and mockups for the new marketing landing page",
+    status: "todo",
+    dueDate: "2025-06-15T00:00:00.000Z",
+    tags: ["Design", "Marketing"],
+  },
+  {
+    id: "2",
+    title: "Fix navigation bug",
+    description: "The dropdown menu doesn't close when clicking outside on mobile devices",
+    status: "in-progress",
+    dueDate: "2025-05-20T00:00:00.000Z",
+    tags: ["Bug", "Frontend"],
+  },
+  {
+    id: "3",
+    title: "Write API documentation",
+    description: "Document the new API endpoints for the developer portal",
+    status: "todo",
+    dueDate: "2025-05-25T00:00:00.000Z",
+    tags: ["Documentation", "API"],
+  },
+  {
+    id: "4",
+    title: "Implement authentication",
+    description: "Add user authentication using OAuth",
+    status: "in-progress",
+    dueDate: "2025-06-01T00:00:00.000Z",
+    tags: ["Backend", "Security"],
+  },
+  {
+    id: "5",
+    title: "Update dependencies",
+    description: "Update all npm packages to their latest versions",
+    status: "done",
+    dueDate: "2025-05-10T00:00:00.000Z",
+    tags: ["Maintenance"],
+  },
+  {
+    id: "6",
+    title: "Create user onboarding flow",
+    description: "Design and implement the new user onboarding experience",
+    status: "todo",
+    dueDate: "2025-06-20T00:00:00.000Z",
+    tags: ["UX", "Frontend"],
+  },
+  {
+    id: "7",
+    title: "Optimize database queries",
+    description: "Improve performance of slow database queries on the dashboard",
+    status: "in-progress",
+    dueDate: "2025-05-28T00:00:00.000Z",
+    tags: ["Performance", "Backend"],
+  },
+  {
+    id: "8",
+    title: "Set up CI/CD pipeline",
+    description: "Configure GitHub Actions for automated testing and deployment",
+    status: "done",
+    dueDate: "2025-05-05T00:00:00.000Z",
+    tags: ["DevOps"],
+  },
+]
