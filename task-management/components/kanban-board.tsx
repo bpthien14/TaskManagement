@@ -24,7 +24,6 @@ export function KanbanBoard() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  // Lấy danh sách task ban đầu từ API
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -73,7 +72,6 @@ export function KanbanBoard() {
     setFilteredTasks(filtered)
   }, [tasks, searchQuery, selectedTags])
 
-  // Lấy tất cả các tag từ danh sách task
   const allTags = Array.from(
     new Set(
       tasks
@@ -82,7 +80,6 @@ export function KanbanBoard() {
     )
   )
 
-  // Nhóm task theo trạng thái
   const todoTasks = filteredTasks.filter((task) => 
     task.status === "todo" || task.status === "To Do"
   )
@@ -95,21 +92,17 @@ export function KanbanBoard() {
     task.status === "done" || task.status === "Done"
   )
 
-  // Xử lý di chuyển task giữa các cột
   const moveTask = async (taskId: string, newStatus: string) => {
     try {
-      // Cập nhật UI trước để tạo trải nghiệm người dùng mượt mà
       setTasks((prevTasks) => 
         prevTasks.map((task) => 
           task._id === taskId ? { ...task, status: newStatus } : task
         )
       )
       
-      // Gọi API để cập nhật trạng thái
       const updatedTask = await updateTaskStatus(taskId, newStatus)
       console.log("Đã di chuyển task:", updatedTask)
       
-      // Cập nhật lại state với dữ liệu từ server
       setTasks((prevTasks) => 
         prevTasks.map((task) => 
           task._id === taskId ? updatedTask : task
@@ -123,7 +116,6 @@ export function KanbanBoard() {
         variant: "destructive"
       })
       
-      // Khôi phục trạng thái cũ nếu có lỗi
       const currentTask = tasks.find((t) => t._id === taskId)
       if (currentTask) {
         setTasks((prevTasks) => [...prevTasks])
@@ -131,7 +123,6 @@ export function KanbanBoard() {
     }
   }
 
-  // Xử lý tạo task mới
   const handleCreateTask = async (taskData: Omit<Task, "_id">) => {
     try {
       const newTask = await createTask(taskData)
@@ -150,7 +141,6 @@ export function KanbanBoard() {
     }
   }
 
-  // Xử lý cập nhật task
   const handleUpdateTask = async (updatedTaskData: Task) => {
     try {
       const { _id, ...taskData } = updatedTaskData
@@ -176,15 +166,10 @@ export function KanbanBoard() {
     }
   }
 
-  // Xử lý xóa task
   const handleDeleteTask = async (taskId: string) => {
     try {
-      // Cập nhật UI trước
-      setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
-      
-      // Gọi API xóa task
       await deleteTask(taskId)
-      
+      setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
       toast({
         title: "Thành công",
         description: "Đã xóa task."
@@ -197,7 +182,6 @@ export function KanbanBoard() {
         variant: "destructive"
       })
       
-      // Tải lại dữ liệu nếu có lỗi
       const fetchTasks = async () => {
         const fetchedTasks = await getAllTasks()
         setTasks(fetchedTasks)
@@ -206,19 +190,16 @@ export function KanbanBoard() {
     }
   }
 
-  // Mở dialog để chỉnh sửa task
   const openEditTaskDialog = (task: Task) => {
     setEditingTask(task)
     setIsTaskDialogOpen(true)
   }
 
-  // Mở dialog để tạo task mới
   const openCreateTaskDialog = () => {
     setEditingTask(null)
     setIsTaskDialogOpen(true)
   }
 
-  // Chuyển đổi trạng thái lọc tag
   const toggleTagFilter = (tag: string) => {
     setSelectedTags((prevTags) => 
       prevTags.includes(tag) 
@@ -227,19 +208,17 @@ export function KanbanBoard() {
     )
   }
 
-  // Hiển thị trạng thái đang tải
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-2 text-sm text-muted-foreground">Đang tải danh sách task...</p>
+          <p className="mt-2 text-sm text-muted-foreground">Loading tasks</p>
         </div>
       </div>
     )
   }
 
-  // Hiển thị thông báo lỗi nếu có
   if (error) {
     return (
       <div className="text-center py-12 text-red-500">
@@ -249,7 +228,7 @@ export function KanbanBoard() {
           className="mt-4" 
           onClick={() => window.location.reload()}
         >
-          Tải lại
+          Reloading
         </Button>
       </div>
     )
@@ -290,7 +269,7 @@ export function KanbanBoard() {
           </div>
           {selectedTags.length > 0 && (
             <Button variant="ghost" size="sm" onClick={() => setSelectedTags([])} className="text-xs h-7 px-2">
-              Xóa bộ lọc
+              Remove filter
             </Button>
           )}
         </div>

@@ -35,7 +35,7 @@ const taskSchema: Schema = new Schema({
     },
     dueDate: {
         type: Date,
-        default: () => new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Mặc định 1 tuần
+        default: () => new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), 
     },
     createdAt: {
         type: Date,
@@ -46,7 +46,7 @@ const taskSchema: Schema = new Schema({
         default: Date.now,
     },
 }, {
-    timestamps: true, // Tự động cập nhật createdAt và updatedAt
+    timestamps: true, 
 });
 
 export default mongoose.model<Document>('Task', taskSchema);

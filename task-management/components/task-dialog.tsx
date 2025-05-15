@@ -36,7 +36,6 @@ export function TaskDialog({ open, onOpenChange, task, onCreateTask, onUpdateTas
   const [tags, setTags] = useState<string[]>([])
   const [titleError, setTitleError] = useState(false)
 
-  // Reset form khi dialog mở/đóng hoặc task thay đổi
   useEffect(() => {
     if (open) {
       if (task) {

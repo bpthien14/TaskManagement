@@ -17,13 +17,12 @@ interface TaskCardProps {
 export function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
   const [{ isDragging }, drag] = useDrag({
     type: "task",
-    item: { id: task._id }, // Sử dụng _id từ MongoDB
+    item: { id: task._id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   })
 
-  // Xác định màu dựa trên độ ưu tiên của task
   const getPriorityColor = (priority: string): string => {
     const lowerPriority = priority?.toLowerCase() || 'medium';
     switch (lowerPriority) {
@@ -81,11 +80,11 @@ export function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
       <CardFooter className="p-2 pt-0 flex justify-end gap-1">
         <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onEdit}>
           <Edit className="h-3 w-3" />
-          <span className="sr-only">Chỉnh sửa</span>
+          <span className="sr-only">Edit</span>
         </Button>
         <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onDelete}>
           <Trash2 className="h-3 w-3" />
-          <span className="sr-only">Xóa</span>
+          <span className="sr-only">Delete</span>
         </Button>
       </CardFooter>
     </Card>
