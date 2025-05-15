@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "TaskFlow - Task Management Application",
   description: "A modern task management application built with Next.js",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
